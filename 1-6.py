@@ -2,8 +2,8 @@ import base64
 filepath = "6.txt"
 def hamming_distance(s1, s2):
     # Convert the strings to bytes
-    b1 = s1.encode()
-    b2 = s2.encode()
+    b1 = base64.b64encode(s1)
+    b2 = base64.b64encode(s2)
 
     # Compute the Hamming distance
     distance = 0
@@ -75,4 +75,10 @@ def decrypt_file(ciphertext_b64, key_size):
     # Return the decrypted message as a string
     return decrypted_message.decode()
 
-print(decrypt_file(ciphertext, hamming_distance(2,40)))
+
+def findkeylength(ciphertext, min_length=2, max_length=40):
+    key = lambda x: decrypt_repeating_key_xor(x, ciphertext)
+    return min(range(min_length, max_length), key=key)
+
+#print(ciphertext)
+print(attack(ciphertext))
