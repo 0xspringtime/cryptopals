@@ -1,4 +1,3 @@
-#1-8#1-8#1-8#1-8#1-8#1-8#1-8#1-8
 # Load the hex-encoded ciphertexts from the file
 with open("8.txt", "r") as f:
     ciphertexts = f.readlines()
